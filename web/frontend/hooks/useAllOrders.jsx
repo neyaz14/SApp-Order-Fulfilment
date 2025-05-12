@@ -11,7 +11,7 @@ const useAllOrders = (options = {}) => {
   const result = useQuery({
     queryKey: ['allorders'],
     queryFn: fetchOrders,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 10 * 60 * 1000,
     refetchOnWindowFocus: true,
     ...options
   });

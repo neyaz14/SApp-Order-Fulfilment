@@ -13,7 +13,9 @@ import useAllOrders from '../hooks/useAllOrders';
 const Order = () => {
 
   const [allorders, refetch, isLoading] = useAllOrders();
-  if (isLoading) return <p>Loading... wait to get orders </p>
+  if (isLoading) return (<Text as="p" variant="heading2xl" tone="caution" alignment="center">
+    <Text as="span">Wait to get the orders data.....</Text>
+  </Text>)
   console.log('all orders ->', allorders)
 
   const handleRefresh = () => {
