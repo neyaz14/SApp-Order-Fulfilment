@@ -22,7 +22,7 @@ const Order = () => {
 
   return (
     <div>
-      <Button variant="primary" onClick={handleRefresh}>Refresh the Orders </Button>
+      <Button class="order-Refresh-btn" variant="primary" onClick={handleRefresh}>Refresh the Orders </Button>
       <OrdersTable orders={allorders}></OrdersTable>
     </div>
   );

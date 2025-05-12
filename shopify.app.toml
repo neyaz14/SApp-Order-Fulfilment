@@ -3,7 +3,7 @@
 client_id = "05281eb04a6c81944c8f82d21570bbab"
 name = "nodeSApp"
 handle = "nodesapp"
-application_url = "https://sufficient-appointment-interested-jordan.trycloudflare.com"
+application_url = "https://portrait-worldcat-captured-points.trycloudflare.com"
 embedded = true
 
 [build]
@@ -15,13 +15,13 @@ api_version = "2025-04"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "read_products,write_products,read_orders,write_orders,read_customers"
+scopes = "read_products,write_products,read_orders,write_orders,read_customers,read_fulfillments,write_fulfillments,read_assigned_fulfillment_orders,write_assigned_fulfillment_orders,read_merchant_managed_fulfillment_orders,write_merchant_managed_fulfillment_orders,read_third_party_fulfillment_orders,write_third_party_fulfillment_orders"
 
 [auth]
 redirect_urls = [
-  "https://sufficient-appointment-interested-jordan.trycloudflare.com/auth/callback",
-  "https://sufficient-appointment-interested-jordan.trycloudflare.com/auth/shopify/callback",
-  "https://sufficient-appointment-interested-jordan.trycloudflare.com/api/auth/callback"
+  "https://portrait-worldcat-captured-points.trycloudflare.com/auth/callback",
+  "https://portrait-worldcat-captured-points.trycloudflare.com/auth/shopify/callback",
+  "https://portrait-worldcat-captured-points.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

@@ -1,8 +1,8 @@
-export const fetchOrders =async (client) => {
-    try {
+export const fetchOrders = async (client) => {
+  try {
 
-        const response = await client.query({
-            data: `
+    const response = await client.query({
+      data: `
         query {
           orders(first: 50) {
             pageInfo {
@@ -31,6 +31,45 @@ export const fetchOrders =async (client) => {
                   email
                   phone
                 }
+                fulfillmentOrders(first: 50) {
+                  edges {
+                    node {
+                      id
+                      status
+                      lineItems(first: 50) {
+                        edges {
+                          node {
+                            id
+                            lineItem {
+                              quantity
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+                lineItems(first: 50) {
+                        edges {
+                          node {
+                            title
+                            quantity
+                            sku
+                            variantTitle
+                            originalUnitPriceSet {
+                              shopMoney {
+                                amount
+                                currencyCode
+                              }
+                            }
+                          }
+                        }
+                  }
+
+                  
+
+
                 shippingAddress {
                   address1
                   address2
@@ -45,14 +84,14 @@ export const fetchOrders =async (client) => {
           }
         }
       `
-        });
+    });
 
-        const orders = response.body.data.orders;
-        // console.log('-------------------------------------------------------------------------------------------------------------------')
-        // console.log("orders ------->>>", orders);
-        return orders;
+    const orders = response.body.data.orders;
+    // console.log('-------------------------------------------------------------------------------------------------------------------')
+    // console.log("orders ------->>>", orders);
+    return orders;
 
-    } catch (err) {
-        console.log(err)
-    }
+  } catch (err) {
+    console.log(err)
+  }
 }

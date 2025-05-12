@@ -119,7 +119,7 @@ const OrdersTable = ({ orders }) => {
                                 {isConfirmed ? (
                                     <Badge status="success">Confirmed</Badge>
                                 ) : (
-                                    <Button onClick={() => handleAddConfrimedTag(node?.id)}>
+                                    <Button status="warning" onClick={() => handleAddConfrimedTag(node?.id)}>
                                         Confirm
                                     </Button>
                                 )}
