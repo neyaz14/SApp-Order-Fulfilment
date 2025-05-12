@@ -14,6 +14,7 @@ import productRoutes from "./routes/productCountRoute.js";
 import { fetchShopMetafield } from "./controllers/fetchShopMetafield.js";
 import { log } from "console";
 import { fetchOrders } from "./controllers/allOrders.js";
+import { fetchOrdersPage } from "./controllers/allOrderspage.js";
 
 const PORT = parseInt(
   process.env.BACKEND_PORT || process.env.PORT || "3000",
@@ -284,7 +285,20 @@ app.post('/api/add-confirmed-tag', async (req, res) => {
 
 
 
+// Updated API endpoint to support pagination
+app.get("/api/ordersPage", async (req, res) => {
+  const session = res.locals.shopify.session;
+  const client = new shopify.api.clients.Graphql({ session });
+  const { cursor, direction = "next", limit = 10 } = req.query;
 
+  try {
+    const orders = await fetchOrdersPage(client, cursor, direction, limit);
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.status(500).json({ error: "Failed to fetch orders" });
+  }
+});
 
 
 

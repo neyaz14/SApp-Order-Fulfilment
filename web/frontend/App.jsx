@@ -22,6 +22,7 @@ export default function App() {
             <a href="/pagename">{t("NavigationMenu.pageName")}</a>
             <a href="/product">{t("All Products")}</a>
             <a href="/order">{t("All Orders")}</a>
+            <a href="/orderwithPagination">{t("All Orders with Pagination")}</a>
           </NavMenu>
           <Routes pages={pages} />
         </QueryProvider>
