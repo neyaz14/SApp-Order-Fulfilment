@@ -19,7 +19,7 @@ export default function App() {
         <QueryProvider>
           <NavMenu>
             <a href="/" rel="home" />
-            <a href="/pagename">{t("NavigationMenu.pageName")}</a>
+            <a href="/pagename">{t("Credentials Input")}</a>
             <a href="/product">{t("All Products")}</a>
             <a href="/order">{t("All Orders")}</a>
             <a href="/orderwithPagination">{t("All Orders with Pagination")}</a>

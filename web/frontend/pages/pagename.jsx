@@ -1,70 +1,71 @@
-import { Card, Page, Layout, TextContainer, Text, MediaCard } from "@shopify/polaris";
-import { TitleBar } from "@shopify/app-bridge-react";
-import { useTranslation } from "react-i18next";
+import {
+  Page,
+  Layout,
+  FormLayout,
+  TextField,
+  Button,
+  Form,
+  Text,
+  Card,
+} from '@shopify/polaris';
+import { useState } from "react";
 
 export default function PageName() {
-  const { t } = useTranslation();
+  const [apiKey, setApiKey] = useState('');
+  const [secretKey, setSecretKey] = useState('');
+
+  const handleSubmit = () => {
+    console.log('API Key:', apiKey);
+    console.log('Secret Key:', secretKey);
+  };
+
   return (
-    <Page>
-      <TitleBar title={t("PageName.title")}>
-        <button variant="primary" onClick={() => console.log("Primary action")}>
-          {t("PageName.primaryAction")}
-        </button>
-        <button onClick={() => console.log("Secondary action")}>
-          {t("PageName.secondaryAction")}
-        </button>
-      </TitleBar>
+    <Page title="Credentials">
       <Layout>
         <Layout.Section>
-          <Card sectioned>
-            <Text variant="headingMd" as="h2">
-              {t("PageName.heading")}
-            </Text>
-            <TextContainer>
-              <p>{t("PageName.body")}</p>
-            </TextContainer>
-          </Card>
-          <Card sectioned>
-            <Text variant="headingMd" as="h2">
-              {t("PageName.heading")}
-            </Text>
-            <TextContainer>
-              <p>{t("PageName.body")}</p>
-            </TextContainer>
+          <Card
+            sectioned
+            title="Add Steadfast Credentials"
+            actions={[{ content: ' ' }]}
+          >
+            <div
+              style={{
+                maxWidth: '900px',
+                margin: '0 auto',
+              }}
+            >
+              <Form onSubmit={handleSubmit}>
+                <FormLayout>
+                  <TextField
+                    label="Base Url"
+                    value="https://portal.packzy.com/api/v1"
+                    onChange={() => {}}
+                    disabled
+                    autoComplete="off"
+                  />
+                  <TextField
+                    label="API Key"
+                    value={apiKey}
+                    onChange={(value) => setApiKey(value)}
+                    autoComplete="off"
+                  />
+                  <TextField
+                    label="Secret Key"
+                    type="password"
+                    value={secretKey}
+                    onChange={(value) => setSecretKey(value)}
+                    autoComplete="off"
+                  />
+                  <div style={{ textAlign: 'right' }}>
+                    <Button submit primary>
+                      Save
+                    </Button>
+                  </div>
+                </FormLayout>
+              </Form>
+            </div>
           </Card>
         </Layout.Section>
-        <Layout.Section secondary>
-          <Card sectioned>
-            <Text variant="headingMd" as="h2">
-              {t("PageName.heading")}
-            </Text>
-            <TextContainer>
-              <p>{t("PageName.body")}</p>
-            </TextContainer>
-          </Card>
-        </Layout.Section>
-
-
-        <MediaCard
-          title="Getting Started"
-          primaryAction={{
-            content: 'Learn about getting started',
-            onAction: () => { },
-          }}
-          description="Discover how Shopify can power up your entrepreneurial journey."
-          popoverActions={[{ content: 'Dismiss', onAction: () => { } }]}
-        >
-          <img
-            alt=""
-            width="100%"
-            height="100%"
-            style={{
-              objectFit: 'cover',
-              objectPosition: 'center',
-            }}
-            src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
-          />
-        </MediaCard>
       </Layout>
     </Page>
   );
